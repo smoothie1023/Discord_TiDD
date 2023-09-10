@@ -1,41 +1,41 @@
 # Discord_TiDD
-Tools for Ticket-Driven Development with Discord
-Support development by issuing tickets on Discord, like ticket-driven development.
+Discordを使ったチケット駆動開発のためのツール
+Discord上でチケットを発行し、チケット駆動開発をサポートします。
 
 ## Requirements
  - Python 3.11.3
  - Discord.py 2.3.2
 
 ## Setup
-1. Clone the repository:
+1. リポジトリをクローンする:
     `git clone https://github.com/smoothie1023/Discord_TiDD.git`
-2. Install the required dependencies: `pip install -r requirements.txt`
-3. Create a DiscordIDs folder in the root directory
-4. Create a text file in the DiscordIDs folder
-    1. token.txt: Your Discord bot token
-    2. channel_id.txt: The channel ID of the channel you want to use for TiDD
-    3. guild_id.txt: The guild ID of the server you want to use for TiDD
-5. Run the bot: `python main.py`
+2. 必要な依存関係をインストールする: `pip install -r requirements.txt`
+3. ルートディレクトリにDiscordIDsフォルダーを作成する。
+4. DiscordIDsフォルダーに以下のテキストファイルを作成する。
+    1. token.txt: Discord Botのトークンを記述する。
+    2. channel_id.txt: TiDDに使用したいチャンネルのチャンネルIDを記述する。
+    3. guild_id.txt: TiDDで使用したいサーバーのギルドIDを記述する。
+5. Run: `python main.py`
 ## Usage
 Command prefix: `/`
-The `--` is prefixed to make it clear that it is an option, but in fact you can use Discord's auto-completion.
-In the example, optional arguments are enclosed in［］for clarity.
+コマンドのオプションであることを明確にするために`--`を先頭につけていますが、実際は不要です。
+例では、分かりやすくするためにオプションの引数を［］で囲んでいます。
 
 1. /チケット発行
-    1. Option: `--title`: Ticket title (str) `--tracker`: Tracker［バグ、機能追加、仕様変更、サポート］
-               `--priority`: Priority［高、通常、低］`--description`: Ticket description (str)
-    2. Example: `/チケット発行［Ticket Title］［バグ］［高］［This is a test ticket.］`
-    3. The ticket numbers are automatically sequentially issued and stored in json.
+    1. Option: `--title`: チケットのタイトル (str) `--tracker`: トラッカー［バグ、機能追加、仕様変更、サポート］
+               `--priority`: 優先度［高、通常、低］`--description`: チケットの説明 (str)
+    2. Example: `/チケット発行［チケットのタイトル］［バグ］［高］［これはテストチケットです。］`
+    3. チケット番号は自動的に連番で発行され、json形式で保存されます。
 2. /チケット更新
-    1. Option: `--ticket_id`: Ticket id (int)
-       Non-required option: `--status`: Ticket status［新規、処理中、完了］`--progressrate`: Progress rate (int)
+    1. Option: `--ticket_id`: チケットID (int)
+       Non-required option: `--status`: チケットステータス［新規、処理中、完了］`--progressrate`: 進捗率 (int)
     2. Example: `/チケット更新［00001］［完了］［100］`
-    3. Note: Even if the progress rate is set to 100%, it will not be completed automatically.
+    3. Note: 進捗率を100％に設定しても、自動的にチケットステータスは完了になりません。
 3. /チケット編集
-    1. Option: `--ticket_id`: Ticket id (int)
-       Non-required option: `--title`: Ticket title (str) `--tracker`: Tracker［バグ、機能追加、仕様変更、サポート］
-         `--priority`: Priority［高、通常、低］`--description`: Ticket description (str)
-    2. Example: `/チケット編集［00001］［Ticket Title］［バグ］［高］［This is a test edit ticket.］`
+    1. Option: `--ticket_id`: チケットID (int)
+       Non-required option: `--title`: チケットのタイトル (str) `--tracker`: トラッカー［バグ、機能追加、仕様変更、サポート］
+         `--priority`: 優先度［高、通常、低］`--description`: チケットの説明 (str)
+    2. Example: `/チケット編集［00001］［チケットのタイトル］［バグ］［高］［これは編集テストチケットです。］`
 4. /チケット一覧
-    1. Non-required option: `--status`: Ticket status［新規、処理中、完了］`--tracker`: Tracker［バグ、機能追加、仕様変更、サポート］`--priority`: Priority［高、通常、低］
+    1. Non-required option: `--status`: チケットステータス［新規、処理中、完了］`--tracker`: トラッカー［バグ、機能追加、仕様変更、サポート］`--priority`: 優先度［高、通常、低］
     2. Example: `/チケット一覧［完了］［バグ］［高］`
