@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import discord
 from discord import app_commands
 
@@ -138,7 +139,7 @@ async def createTicket(ctx:discord.Interaction,title:str,tracker:Literal["バグ
     status="チケットのステータス",
     progressrate="チケットの進捗率"
 )
-async def updateTicket(ctx:discord.Interaction,ticket_id:str,status:Literal["新規","処理中","完了"]=None,progressrate:int=None):
+async def updateTicket(ctx:discord.Interaction,ticket_id:str,status:Literal["新規","処理中","リリース待ち","完了"]=None,progressrate:int=None):
     try:
         int(ticket_id)
     except ValueError:
@@ -230,7 +231,7 @@ async def editTicket(ctx:discord.Interaction,ticket_id:str,title:str=None,tracke
     tracker="チケットの種類",
     priority="チケットの優先度"
 )
-async def showTicketList(ctx:discord.Interaction,status:Literal["新規","処理中","完了"]=None,tracker:Literal["バグ","機能追加","仕様変更","サポート"]=None,priority:Literal["高","通常","低"]=None):
+async def showTicketList(ctx:discord.Interaction,status:Literal["新規","処理中","リリース待ち","完了"]=None,tracker:Literal["バグ","機能追加","仕様変更","サポート"]=None,priority:Literal["高","通常","低"]=None):
     await ctx.response.defer()
     ticket_num,read_data=load_json()
     if ticket_num==-1:
